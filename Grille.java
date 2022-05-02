@@ -1,3 +1,4 @@
+
 public class Grille {
     Pions[][] cases = new Pions[6][7];
 
@@ -62,13 +63,26 @@ public class Grille {
             }
         }
 
-        // Check for diagonal
+        // Check for diagonal up right
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 4; j++) {
                 if (cases[i][j] != null && cases[i + 1][j + 1] != null && cases[i + 2][j + 2] != null
                         && cases[i + 3][j + 3] != null && cases[i][j].couleur == cases[i + 1][j + 1].couleur
                         && cases[i][j].couleur == cases[i + 2][j + 2].couleur
                         && cases[i][j].couleur == cases[i + 3][j + 3].couleur) {
+                    System.out.println("Joueur " + cases[i][j].couleur + " a gagné");
+                    return true;
+                }
+            }
+        }
+
+        // Check for diagonal up left
+        for (int i = 0; i < 3; i++) {
+            for (int j = 3; j < 7; j++) {
+                if (cases[i][j] != null && cases[i + 1][j - 1] != null && cases[i + 2][j - 2] != null
+                        && cases[i + 3][j - 3] != null && cases[i][j].couleur == cases[i + 1][j - 1].couleur
+                        && cases[i][j].couleur == cases[i + 2][j - 2].couleur
+                        && cases[i][j].couleur == cases[i + 3][j - 3].couleur) {
                     System.out.println("Joueur " + cases[i][j].couleur + " a gagné");
                     return true;
                 }
